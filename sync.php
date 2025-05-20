@@ -15,7 +15,7 @@ function tstr($string, $connection) {
 
 foreach (json_decode($remote_data) as $record) {
     $url = $record->URL;
-    $arr = mysqli_fetch_array(mysqli_query($connection, "SELECT COUNT(*), ID FROM channel_db WHERE URL = '$url'"));
+    $arr = mysqli_fetch_array(mysqli_query($connection, "SELECT COUNT(*), ID FROM channel_db WHERE URL = " . tstr($url, $connection) . ""));
     $result = $arr[0];
     $id = $arr[1];
     //
